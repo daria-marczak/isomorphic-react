@@ -3,10 +3,6 @@ import fetch from "isomorphic-fetch";
 
 export default function * () {
   while (true) {
-      /**
-       * Wait for a request to fetch questions, then fetch data from the API and notify the application
-       * that new questions have been loaded.
-       */
       yield take(`REQUEST_FETCH_QUESTIONS`);
       const raw = yield fetch('/api/questions');
       const json = yield raw.json();

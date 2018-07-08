@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "cross-env NODE_ENV=development babel-node server --useServerRender=true --useLiveData=false"
+    "build": "cross-env webpack --config ./webpack.config.prod.babel.js",
+    "postinstall": "npm install -g babel-cli@6.26.0 cross-env@5.0.5 webpack@3.6.0",
+    "start": "npm run start-prod",
+    "start-dev": "cross-env NODE_ENV=development babel-node server --useServerRender=true --useLiveData=true",
+    "start-prod": "npm run build && cross-env NODE_ENV=production babel-node server --useServerRender=true --useLiveData=true"
   },
   "keywords": [],
   "author": "",
