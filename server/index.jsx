@@ -1,5 +1,5 @@
 import express from "express";
-import yields from "express-yields";
+import yields from "express-yields"; // Just by importing it it actually works with express 
 import fs from "fs-extra";
 
 const port = process.env.PORT || 3000;
