@@ -1,4 +1,6 @@
-import { mapStateToProps } from "../QuestionDetail";
+import { mapStateToProps, QuestionDetailDisplay } from "../QuestionDetail";
+import renderer from "react-test-renderer";
+import React from "react";
 
 describe("The question detail component", () => {
   describe("container element", () => {
@@ -18,6 +20,21 @@ describe("The question detail component", () => {
         const componentState = mapStateToProps(appState, ownProps);
         expect(componentState).toEqual(sampleQuestion);
       });
+    });
+  });
+
+  describe("The display element", () => {
+    it("should not regress", () => {
+      const tree = renderer.create(
+        <QuestionDetailDisplay
+          title="Something"
+          body="Whatever"
+          answer_count={5}
+          tags={["blah blah"]}
+        />
+      );
+
+      expect(tree.toJSON()).toMatchSnapshot();
     });
   });
 });
