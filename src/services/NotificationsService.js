@@ -4,6 +4,6 @@ export default {
   async GetNotifications() {
     console.warn("Real notification service!");
     await delay(1000);
-    return { count: 42 };
+    return { count: 0 };
   }
 }
